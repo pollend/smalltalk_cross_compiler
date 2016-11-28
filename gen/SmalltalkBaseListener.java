@@ -27,169 +27,61 @@ public class SmalltalkBaseListener implements SmalltalkListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterIdentifier(SmalltalkParser.IdentifierContext ctx) { }
+	@Override public void enterMethod(SmalltalkParser.MethodContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitIdentifier(SmalltalkParser.IdentifierContext ctx) { }
+	@Override public void exitMethod(SmalltalkParser.MethodContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterKeyword(SmalltalkParser.KeywordContext ctx) { }
+	@Override public void enterMessage_pattern(SmalltalkParser.Message_patternContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitKeyword(SmalltalkParser.KeywordContext ctx) { }
+	@Override public void exitMessage_pattern(SmalltalkParser.Message_patternContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterVariable_name(SmalltalkParser.Variable_nameContext ctx) { }
+	@Override public void enterPrimitive_number(SmalltalkParser.Primitive_numberContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitVariable_name(SmalltalkParser.Variable_nameContext ctx) { }
+	@Override public void exitPrimitive_number(SmalltalkParser.Primitive_numberContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterUnary_selector(SmalltalkParser.Unary_selectorContext ctx) { }
+	@Override public void enterTemporaries(SmalltalkParser.TemporariesContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitUnary_selector(SmalltalkParser.Unary_selectorContext ctx) { }
+	@Override public void exitTemporaries(SmalltalkParser.TemporariesContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterBinary_selector(SmalltalkParser.Binary_selectorContext ctx) { }
+	@Override public void enterExpression_series(SmalltalkParser.Expression_seriesContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitBinary_selector(SmalltalkParser.Binary_selectorContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterArray(SmalltalkParser.ArrayContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitArray(SmalltalkParser.ArrayContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterNumber(SmalltalkParser.NumberContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitNumber(SmalltalkParser.NumberContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterSymbol(SmalltalkParser.SymbolContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitSymbol(SmalltalkParser.SymbolContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterString(SmalltalkParser.StringContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitString(SmalltalkParser.StringContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterCharacter_constant(SmalltalkParser.Character_constantContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitCharacter_constant(SmalltalkParser.Character_constantContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterWs(SmalltalkParser.WsContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitWs(SmalltalkParser.WsContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterArray_constant(SmalltalkParser.Array_constantContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitArray_constant(SmalltalkParser.Array_constantContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterLiteral(SmalltalkParser.LiteralContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitLiteral(SmalltalkParser.LiteralContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterSymbol_constant(SmalltalkParser.Symbol_constantContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitSymbol_constant(SmalltalkParser.Symbol_constantContext ctx) { }
+	@Override public void exitExpression_series(SmalltalkParser.Expression_seriesContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -207,6 +99,18 @@ public class SmalltalkBaseListener implements SmalltalkListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterUnit(SmalltalkParser.UnitContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitUnit(SmalltalkParser.UnitContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterPrimary(SmalltalkParser.PrimaryContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -219,25 +123,25 @@ public class SmalltalkBaseListener implements SmalltalkListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterUnary_object_description(SmalltalkParser.Unary_object_descriptionContext ctx) { }
+	@Override public void enterMessage_expression(SmalltalkParser.Message_expressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitUnary_object_description(SmalltalkParser.Unary_object_descriptionContext ctx) { }
+	@Override public void exitMessage_expression(SmalltalkParser.Message_expressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterBinary_object_description(SmalltalkParser.Binary_object_descriptionContext ctx) { }
+	@Override public void enterCascade_message(SmalltalkParser.Cascade_messageContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitBinary_object_description(SmalltalkParser.Binary_object_descriptionContext ctx) { }
+	@Override public void exitCascade_message(SmalltalkParser.Cascade_messageContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -279,37 +183,37 @@ public class SmalltalkBaseListener implements SmalltalkListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterMessage_expression(SmalltalkParser.Message_expressionContext ctx) { }
+	@Override public void enterUnary_message(SmalltalkParser.Unary_messageContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitMessage_expression(SmalltalkParser.Message_expressionContext ctx) { }
+	@Override public void exitUnary_message(SmalltalkParser.Unary_messageContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterCascaded_message_expression(SmalltalkParser.Cascaded_message_expressionContext ctx) { }
+	@Override public void enterBinary_message(SmalltalkParser.Binary_messageContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitCascaded_message_expression(SmalltalkParser.Cascaded_message_expressionContext ctx) { }
+	@Override public void exitBinary_message(SmalltalkParser.Binary_messageContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterStatement(SmalltalkParser.StatementContext ctx) { }
+	@Override public void enterKeyword_message(SmalltalkParser.Keyword_messageContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitStatement(SmalltalkParser.StatementContext ctx) { }
+	@Override public void exitKeyword_message(SmalltalkParser.Keyword_messageContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -327,37 +231,169 @@ public class SmalltalkBaseListener implements SmalltalkListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterTemporaries(SmalltalkParser.TemporariesContext ctx) { }
+	@Override public void enterKeyword(SmalltalkParser.KeywordContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitTemporaries(SmalltalkParser.TemporariesContext ctx) { }
+	@Override public void exitKeyword(SmalltalkParser.KeywordContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterMessage_pattern(SmalltalkParser.Message_patternContext ctx) { }
+	@Override public void enterBinary_selector(SmalltalkParser.Binary_selectorContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitMessage_pattern(SmalltalkParser.Message_patternContext ctx) { }
+	@Override public void exitBinary_selector(SmalltalkParser.Binary_selectorContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterMethod(SmalltalkParser.MethodContext ctx) { }
+	@Override public void enterUnary_selector(SmalltalkParser.Unary_selectorContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitMethod(SmalltalkParser.MethodContext ctx) { }
+	@Override public void exitUnary_selector(SmalltalkParser.Unary_selectorContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterLiteral(SmalltalkParser.LiteralContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitLiteral(SmalltalkParser.LiteralContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterArray_constant(SmalltalkParser.Array_constantContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitArray_constant(SmalltalkParser.Array_constantContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterArray(SmalltalkParser.ArrayContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitArray(SmalltalkParser.ArrayContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterNumber(SmalltalkParser.NumberContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitNumber(SmalltalkParser.NumberContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterString(SmalltalkParser.StringContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitString(SmalltalkParser.StringContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterCharacter_constant(SmalltalkParser.Character_constantContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitCharacter_constant(SmalltalkParser.Character_constantContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterSymbol_constant(SmalltalkParser.Symbol_constantContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitSymbol_constant(SmalltalkParser.Symbol_constantContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterSymbol(SmalltalkParser.SymbolContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitSymbol(SmalltalkParser.SymbolContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterIdentifier(SmalltalkParser.IdentifierContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitIdentifier(SmalltalkParser.IdentifierContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterVariable_name(SmalltalkParser.Variable_nameContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitVariable_name(SmalltalkParser.Variable_nameContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterComment(SmalltalkParser.CommentContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitComment(SmalltalkParser.CommentContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

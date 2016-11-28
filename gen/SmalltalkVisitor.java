@@ -16,89 +16,35 @@ public interface SmalltalkVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitScript(SmalltalkParser.ScriptContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link SmalltalkParser#identifier}.
+	 * Visit a parse tree produced by {@link SmalltalkParser#method}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitIdentifier(SmalltalkParser.IdentifierContext ctx);
+	T visitMethod(SmalltalkParser.MethodContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link SmalltalkParser#keyword}.
+	 * Visit a parse tree produced by {@link SmalltalkParser#message_pattern}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitKeyword(SmalltalkParser.KeywordContext ctx);
+	T visitMessage_pattern(SmalltalkParser.Message_patternContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link SmalltalkParser#variable_name}.
+	 * Visit a parse tree produced by {@link SmalltalkParser#primitive_number}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitVariable_name(SmalltalkParser.Variable_nameContext ctx);
+	T visitPrimitive_number(SmalltalkParser.Primitive_numberContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link SmalltalkParser#unary_selector}.
+	 * Visit a parse tree produced by {@link SmalltalkParser#temporaries}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitUnary_selector(SmalltalkParser.Unary_selectorContext ctx);
+	T visitTemporaries(SmalltalkParser.TemporariesContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link SmalltalkParser#binary_selector}.
+	 * Visit a parse tree produced by {@link SmalltalkParser#expression_series}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitBinary_selector(SmalltalkParser.Binary_selectorContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link SmalltalkParser#array}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitArray(SmalltalkParser.ArrayContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link SmalltalkParser#number}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitNumber(SmalltalkParser.NumberContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link SmalltalkParser#symbol}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitSymbol(SmalltalkParser.SymbolContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link SmalltalkParser#string}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitString(SmalltalkParser.StringContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link SmalltalkParser#character_constant}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitCharacter_constant(SmalltalkParser.Character_constantContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link SmalltalkParser#ws}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitWs(SmalltalkParser.WsContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link SmalltalkParser#array_constant}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitArray_constant(SmalltalkParser.Array_constantContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link SmalltalkParser#literal}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitLiteral(SmalltalkParser.LiteralContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link SmalltalkParser#symbol_constant}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitSymbol_constant(SmalltalkParser.Symbol_constantContext ctx);
+	T visitExpression_series(SmalltalkParser.Expression_seriesContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link SmalltalkParser#expression}.
 	 * @param ctx the parse tree
@@ -106,23 +52,29 @@ public interface SmalltalkVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitExpression(SmalltalkParser.ExpressionContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link SmalltalkParser#unit}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitUnit(SmalltalkParser.UnitContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link SmalltalkParser#primary}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitPrimary(SmalltalkParser.PrimaryContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link SmalltalkParser#unary_object_description}.
+	 * Visit a parse tree produced by {@link SmalltalkParser#message_expression}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitUnary_object_description(SmalltalkParser.Unary_object_descriptionContext ctx);
+	T visitMessage_expression(SmalltalkParser.Message_expressionContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link SmalltalkParser#binary_object_description}.
+	 * Visit a parse tree produced by {@link SmalltalkParser#cascade_message}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitBinary_object_description(SmalltalkParser.Binary_object_descriptionContext ctx);
+	T visitCascade_message(SmalltalkParser.Cascade_messageContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link SmalltalkParser#unary_expression}.
 	 * @param ctx the parse tree
@@ -142,23 +94,23 @@ public interface SmalltalkVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitKeyword_expression(SmalltalkParser.Keyword_expressionContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link SmalltalkParser#message_expression}.
+	 * Visit a parse tree produced by {@link SmalltalkParser#unary_message}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitMessage_expression(SmalltalkParser.Message_expressionContext ctx);
+	T visitUnary_message(SmalltalkParser.Unary_messageContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link SmalltalkParser#cascaded_message_expression}.
+	 * Visit a parse tree produced by {@link SmalltalkParser#binary_message}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitCascaded_message_expression(SmalltalkParser.Cascaded_message_expressionContext ctx);
+	T visitBinary_message(SmalltalkParser.Binary_messageContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link SmalltalkParser#statement}.
+	 * Visit a parse tree produced by {@link SmalltalkParser#keyword_message}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitStatement(SmalltalkParser.StatementContext ctx);
+	T visitKeyword_message(SmalltalkParser.Keyword_messageContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link SmalltalkParser#block}.
 	 * @param ctx the parse tree
@@ -166,21 +118,87 @@ public interface SmalltalkVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitBlock(SmalltalkParser.BlockContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link SmalltalkParser#temporaries}.
+	 * Visit a parse tree produced by {@link SmalltalkParser#keyword}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitTemporaries(SmalltalkParser.TemporariesContext ctx);
+	T visitKeyword(SmalltalkParser.KeywordContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link SmalltalkParser#message_pattern}.
+	 * Visit a parse tree produced by {@link SmalltalkParser#binary_selector}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitMessage_pattern(SmalltalkParser.Message_patternContext ctx);
+	T visitBinary_selector(SmalltalkParser.Binary_selectorContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link SmalltalkParser#method}.
+	 * Visit a parse tree produced by {@link SmalltalkParser#unary_selector}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitMethod(SmalltalkParser.MethodContext ctx);
+	T visitUnary_selector(SmalltalkParser.Unary_selectorContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link SmalltalkParser#literal}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitLiteral(SmalltalkParser.LiteralContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link SmalltalkParser#array_constant}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitArray_constant(SmalltalkParser.Array_constantContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link SmalltalkParser#array}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitArray(SmalltalkParser.ArrayContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link SmalltalkParser#number}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitNumber(SmalltalkParser.NumberContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link SmalltalkParser#string}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitString(SmalltalkParser.StringContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link SmalltalkParser#character_constant}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitCharacter_constant(SmalltalkParser.Character_constantContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link SmalltalkParser#symbol_constant}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitSymbol_constant(SmalltalkParser.Symbol_constantContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link SmalltalkParser#symbol}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitSymbol(SmalltalkParser.SymbolContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link SmalltalkParser#identifier}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitIdentifier(SmalltalkParser.IdentifierContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link SmalltalkParser#variable_name}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitVariable_name(SmalltalkParser.Variable_nameContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link SmalltalkParser#comment}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitComment(SmalltalkParser.CommentContext ctx);
 }

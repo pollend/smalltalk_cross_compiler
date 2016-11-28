@@ -17,145 +17,55 @@ public interface SmalltalkListener extends ParseTreeListener {
 	 */
 	void exitScript(SmalltalkParser.ScriptContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link SmalltalkParser#identifier}.
+	 * Enter a parse tree produced by {@link SmalltalkParser#method}.
 	 * @param ctx the parse tree
 	 */
-	void enterIdentifier(SmalltalkParser.IdentifierContext ctx);
+	void enterMethod(SmalltalkParser.MethodContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link SmalltalkParser#identifier}.
+	 * Exit a parse tree produced by {@link SmalltalkParser#method}.
 	 * @param ctx the parse tree
 	 */
-	void exitIdentifier(SmalltalkParser.IdentifierContext ctx);
+	void exitMethod(SmalltalkParser.MethodContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link SmalltalkParser#keyword}.
+	 * Enter a parse tree produced by {@link SmalltalkParser#message_pattern}.
 	 * @param ctx the parse tree
 	 */
-	void enterKeyword(SmalltalkParser.KeywordContext ctx);
+	void enterMessage_pattern(SmalltalkParser.Message_patternContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link SmalltalkParser#keyword}.
+	 * Exit a parse tree produced by {@link SmalltalkParser#message_pattern}.
 	 * @param ctx the parse tree
 	 */
-	void exitKeyword(SmalltalkParser.KeywordContext ctx);
+	void exitMessage_pattern(SmalltalkParser.Message_patternContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link SmalltalkParser#variable_name}.
+	 * Enter a parse tree produced by {@link SmalltalkParser#primitive_number}.
 	 * @param ctx the parse tree
 	 */
-	void enterVariable_name(SmalltalkParser.Variable_nameContext ctx);
+	void enterPrimitive_number(SmalltalkParser.Primitive_numberContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link SmalltalkParser#variable_name}.
+	 * Exit a parse tree produced by {@link SmalltalkParser#primitive_number}.
 	 * @param ctx the parse tree
 	 */
-	void exitVariable_name(SmalltalkParser.Variable_nameContext ctx);
+	void exitPrimitive_number(SmalltalkParser.Primitive_numberContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link SmalltalkParser#unary_selector}.
+	 * Enter a parse tree produced by {@link SmalltalkParser#temporaries}.
 	 * @param ctx the parse tree
 	 */
-	void enterUnary_selector(SmalltalkParser.Unary_selectorContext ctx);
+	void enterTemporaries(SmalltalkParser.TemporariesContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link SmalltalkParser#unary_selector}.
+	 * Exit a parse tree produced by {@link SmalltalkParser#temporaries}.
 	 * @param ctx the parse tree
 	 */
-	void exitUnary_selector(SmalltalkParser.Unary_selectorContext ctx);
+	void exitTemporaries(SmalltalkParser.TemporariesContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link SmalltalkParser#binary_selector}.
+	 * Enter a parse tree produced by {@link SmalltalkParser#expression_series}.
 	 * @param ctx the parse tree
 	 */
-	void enterBinary_selector(SmalltalkParser.Binary_selectorContext ctx);
+	void enterExpression_series(SmalltalkParser.Expression_seriesContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link SmalltalkParser#binary_selector}.
+	 * Exit a parse tree produced by {@link SmalltalkParser#expression_series}.
 	 * @param ctx the parse tree
 	 */
-	void exitBinary_selector(SmalltalkParser.Binary_selectorContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link SmalltalkParser#array}.
-	 * @param ctx the parse tree
-	 */
-	void enterArray(SmalltalkParser.ArrayContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link SmalltalkParser#array}.
-	 * @param ctx the parse tree
-	 */
-	void exitArray(SmalltalkParser.ArrayContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link SmalltalkParser#number}.
-	 * @param ctx the parse tree
-	 */
-	void enterNumber(SmalltalkParser.NumberContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link SmalltalkParser#number}.
-	 * @param ctx the parse tree
-	 */
-	void exitNumber(SmalltalkParser.NumberContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link SmalltalkParser#symbol}.
-	 * @param ctx the parse tree
-	 */
-	void enterSymbol(SmalltalkParser.SymbolContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link SmalltalkParser#symbol}.
-	 * @param ctx the parse tree
-	 */
-	void exitSymbol(SmalltalkParser.SymbolContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link SmalltalkParser#string}.
-	 * @param ctx the parse tree
-	 */
-	void enterString(SmalltalkParser.StringContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link SmalltalkParser#string}.
-	 * @param ctx the parse tree
-	 */
-	void exitString(SmalltalkParser.StringContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link SmalltalkParser#character_constant}.
-	 * @param ctx the parse tree
-	 */
-	void enterCharacter_constant(SmalltalkParser.Character_constantContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link SmalltalkParser#character_constant}.
-	 * @param ctx the parse tree
-	 */
-	void exitCharacter_constant(SmalltalkParser.Character_constantContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link SmalltalkParser#ws}.
-	 * @param ctx the parse tree
-	 */
-	void enterWs(SmalltalkParser.WsContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link SmalltalkParser#ws}.
-	 * @param ctx the parse tree
-	 */
-	void exitWs(SmalltalkParser.WsContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link SmalltalkParser#array_constant}.
-	 * @param ctx the parse tree
-	 */
-	void enterArray_constant(SmalltalkParser.Array_constantContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link SmalltalkParser#array_constant}.
-	 * @param ctx the parse tree
-	 */
-	void exitArray_constant(SmalltalkParser.Array_constantContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link SmalltalkParser#literal}.
-	 * @param ctx the parse tree
-	 */
-	void enterLiteral(SmalltalkParser.LiteralContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link SmalltalkParser#literal}.
-	 * @param ctx the parse tree
-	 */
-	void exitLiteral(SmalltalkParser.LiteralContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link SmalltalkParser#symbol_constant}.
-	 * @param ctx the parse tree
-	 */
-	void enterSymbol_constant(SmalltalkParser.Symbol_constantContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link SmalltalkParser#symbol_constant}.
-	 * @param ctx the parse tree
-	 */
-	void exitSymbol_constant(SmalltalkParser.Symbol_constantContext ctx);
+	void exitExpression_series(SmalltalkParser.Expression_seriesContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link SmalltalkParser#expression}.
 	 * @param ctx the parse tree
@@ -167,6 +77,16 @@ public interface SmalltalkListener extends ParseTreeListener {
 	 */
 	void exitExpression(SmalltalkParser.ExpressionContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link SmalltalkParser#unit}.
+	 * @param ctx the parse tree
+	 */
+	void enterUnit(SmalltalkParser.UnitContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SmalltalkParser#unit}.
+	 * @param ctx the parse tree
+	 */
+	void exitUnit(SmalltalkParser.UnitContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link SmalltalkParser#primary}.
 	 * @param ctx the parse tree
 	 */
@@ -177,25 +97,25 @@ public interface SmalltalkListener extends ParseTreeListener {
 	 */
 	void exitPrimary(SmalltalkParser.PrimaryContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link SmalltalkParser#unary_object_description}.
+	 * Enter a parse tree produced by {@link SmalltalkParser#message_expression}.
 	 * @param ctx the parse tree
 	 */
-	void enterUnary_object_description(SmalltalkParser.Unary_object_descriptionContext ctx);
+	void enterMessage_expression(SmalltalkParser.Message_expressionContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link SmalltalkParser#unary_object_description}.
+	 * Exit a parse tree produced by {@link SmalltalkParser#message_expression}.
 	 * @param ctx the parse tree
 	 */
-	void exitUnary_object_description(SmalltalkParser.Unary_object_descriptionContext ctx);
+	void exitMessage_expression(SmalltalkParser.Message_expressionContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link SmalltalkParser#binary_object_description}.
+	 * Enter a parse tree produced by {@link SmalltalkParser#cascade_message}.
 	 * @param ctx the parse tree
 	 */
-	void enterBinary_object_description(SmalltalkParser.Binary_object_descriptionContext ctx);
+	void enterCascade_message(SmalltalkParser.Cascade_messageContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link SmalltalkParser#binary_object_description}.
+	 * Exit a parse tree produced by {@link SmalltalkParser#cascade_message}.
 	 * @param ctx the parse tree
 	 */
-	void exitBinary_object_description(SmalltalkParser.Binary_object_descriptionContext ctx);
+	void exitCascade_message(SmalltalkParser.Cascade_messageContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link SmalltalkParser#unary_expression}.
 	 * @param ctx the parse tree
@@ -227,35 +147,35 @@ public interface SmalltalkListener extends ParseTreeListener {
 	 */
 	void exitKeyword_expression(SmalltalkParser.Keyword_expressionContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link SmalltalkParser#message_expression}.
+	 * Enter a parse tree produced by {@link SmalltalkParser#unary_message}.
 	 * @param ctx the parse tree
 	 */
-	void enterMessage_expression(SmalltalkParser.Message_expressionContext ctx);
+	void enterUnary_message(SmalltalkParser.Unary_messageContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link SmalltalkParser#message_expression}.
+	 * Exit a parse tree produced by {@link SmalltalkParser#unary_message}.
 	 * @param ctx the parse tree
 	 */
-	void exitMessage_expression(SmalltalkParser.Message_expressionContext ctx);
+	void exitUnary_message(SmalltalkParser.Unary_messageContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link SmalltalkParser#cascaded_message_expression}.
+	 * Enter a parse tree produced by {@link SmalltalkParser#binary_message}.
 	 * @param ctx the parse tree
 	 */
-	void enterCascaded_message_expression(SmalltalkParser.Cascaded_message_expressionContext ctx);
+	void enterBinary_message(SmalltalkParser.Binary_messageContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link SmalltalkParser#cascaded_message_expression}.
+	 * Exit a parse tree produced by {@link SmalltalkParser#binary_message}.
 	 * @param ctx the parse tree
 	 */
-	void exitCascaded_message_expression(SmalltalkParser.Cascaded_message_expressionContext ctx);
+	void exitBinary_message(SmalltalkParser.Binary_messageContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link SmalltalkParser#statement}.
+	 * Enter a parse tree produced by {@link SmalltalkParser#keyword_message}.
 	 * @param ctx the parse tree
 	 */
-	void enterStatement(SmalltalkParser.StatementContext ctx);
+	void enterKeyword_message(SmalltalkParser.Keyword_messageContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link SmalltalkParser#statement}.
+	 * Exit a parse tree produced by {@link SmalltalkParser#keyword_message}.
 	 * @param ctx the parse tree
 	 */
-	void exitStatement(SmalltalkParser.StatementContext ctx);
+	void exitKeyword_message(SmalltalkParser.Keyword_messageContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link SmalltalkParser#block}.
 	 * @param ctx the parse tree
@@ -267,33 +187,143 @@ public interface SmalltalkListener extends ParseTreeListener {
 	 */
 	void exitBlock(SmalltalkParser.BlockContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link SmalltalkParser#temporaries}.
+	 * Enter a parse tree produced by {@link SmalltalkParser#keyword}.
 	 * @param ctx the parse tree
 	 */
-	void enterTemporaries(SmalltalkParser.TemporariesContext ctx);
+	void enterKeyword(SmalltalkParser.KeywordContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link SmalltalkParser#temporaries}.
+	 * Exit a parse tree produced by {@link SmalltalkParser#keyword}.
 	 * @param ctx the parse tree
 	 */
-	void exitTemporaries(SmalltalkParser.TemporariesContext ctx);
+	void exitKeyword(SmalltalkParser.KeywordContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link SmalltalkParser#message_pattern}.
+	 * Enter a parse tree produced by {@link SmalltalkParser#binary_selector}.
 	 * @param ctx the parse tree
 	 */
-	void enterMessage_pattern(SmalltalkParser.Message_patternContext ctx);
+	void enterBinary_selector(SmalltalkParser.Binary_selectorContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link SmalltalkParser#message_pattern}.
+	 * Exit a parse tree produced by {@link SmalltalkParser#binary_selector}.
 	 * @param ctx the parse tree
 	 */
-	void exitMessage_pattern(SmalltalkParser.Message_patternContext ctx);
+	void exitBinary_selector(SmalltalkParser.Binary_selectorContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link SmalltalkParser#method}.
+	 * Enter a parse tree produced by {@link SmalltalkParser#unary_selector}.
 	 * @param ctx the parse tree
 	 */
-	void enterMethod(SmalltalkParser.MethodContext ctx);
+	void enterUnary_selector(SmalltalkParser.Unary_selectorContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link SmalltalkParser#method}.
+	 * Exit a parse tree produced by {@link SmalltalkParser#unary_selector}.
 	 * @param ctx the parse tree
 	 */
-	void exitMethod(SmalltalkParser.MethodContext ctx);
+	void exitUnary_selector(SmalltalkParser.Unary_selectorContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link SmalltalkParser#literal}.
+	 * @param ctx the parse tree
+	 */
+	void enterLiteral(SmalltalkParser.LiteralContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SmalltalkParser#literal}.
+	 * @param ctx the parse tree
+	 */
+	void exitLiteral(SmalltalkParser.LiteralContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link SmalltalkParser#array_constant}.
+	 * @param ctx the parse tree
+	 */
+	void enterArray_constant(SmalltalkParser.Array_constantContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SmalltalkParser#array_constant}.
+	 * @param ctx the parse tree
+	 */
+	void exitArray_constant(SmalltalkParser.Array_constantContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link SmalltalkParser#array}.
+	 * @param ctx the parse tree
+	 */
+	void enterArray(SmalltalkParser.ArrayContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SmalltalkParser#array}.
+	 * @param ctx the parse tree
+	 */
+	void exitArray(SmalltalkParser.ArrayContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link SmalltalkParser#number}.
+	 * @param ctx the parse tree
+	 */
+	void enterNumber(SmalltalkParser.NumberContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SmalltalkParser#number}.
+	 * @param ctx the parse tree
+	 */
+	void exitNumber(SmalltalkParser.NumberContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link SmalltalkParser#string}.
+	 * @param ctx the parse tree
+	 */
+	void enterString(SmalltalkParser.StringContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SmalltalkParser#string}.
+	 * @param ctx the parse tree
+	 */
+	void exitString(SmalltalkParser.StringContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link SmalltalkParser#character_constant}.
+	 * @param ctx the parse tree
+	 */
+	void enterCharacter_constant(SmalltalkParser.Character_constantContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SmalltalkParser#character_constant}.
+	 * @param ctx the parse tree
+	 */
+	void exitCharacter_constant(SmalltalkParser.Character_constantContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link SmalltalkParser#symbol_constant}.
+	 * @param ctx the parse tree
+	 */
+	void enterSymbol_constant(SmalltalkParser.Symbol_constantContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SmalltalkParser#symbol_constant}.
+	 * @param ctx the parse tree
+	 */
+	void exitSymbol_constant(SmalltalkParser.Symbol_constantContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link SmalltalkParser#symbol}.
+	 * @param ctx the parse tree
+	 */
+	void enterSymbol(SmalltalkParser.SymbolContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SmalltalkParser#symbol}.
+	 * @param ctx the parse tree
+	 */
+	void exitSymbol(SmalltalkParser.SymbolContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link SmalltalkParser#identifier}.
+	 * @param ctx the parse tree
+	 */
+	void enterIdentifier(SmalltalkParser.IdentifierContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SmalltalkParser#identifier}.
+	 * @param ctx the parse tree
+	 */
+	void exitIdentifier(SmalltalkParser.IdentifierContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link SmalltalkParser#variable_name}.
+	 * @param ctx the parse tree
+	 */
+	void enterVariable_name(SmalltalkParser.Variable_nameContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SmalltalkParser#variable_name}.
+	 * @param ctx the parse tree
+	 */
+	void exitVariable_name(SmalltalkParser.Variable_nameContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link SmalltalkParser#comment}.
+	 * @param ctx the parse tree
+	 */
+	void enterComment(SmalltalkParser.CommentContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SmalltalkParser#comment}.
+	 * @param ctx the parse tree
+	 */
+	void exitComment(SmalltalkParser.CommentContext ctx);
 }
