@@ -1,13 +1,13 @@
 grammar Smalltalk;
 
-script: expression_series EOF;
+script: (method | expression '.' | comment | temporaries )* EOF;
 
 
 method: message_pattern primitive_number? temporaries? expression_series;
 message_pattern: unary_selector | (binary_selector variable_name) | (keyword variable_name)+;
-primitive_number: LEFT_ARROW PRIMATIVE number RIGHT_ARROW;
+primitive_number: LEFT_ARROW PRIMATIVE COLON number RIGHT_ARROW;
 temporaries: PIPE  variable_name* PIPE;
-expression_series: (temporaries | (expression '.') |comment  )* ('^'? expression)?;
+expression_series: (expression '.' | comment | temporaries )* ( CARET? expression)?;
 expression: (variable_name ASSIGNMENT)? (primary | message_expression (';' cascade_message)*);
 unit: variable_name | literal | block | OPEN_PAREN expression CLOSE_PAREN;
 primary: unit | unary_expression;
@@ -35,20 +35,23 @@ identifier: IDENTIFIER;
 variable_name: IDENTIFIER;
 comment:COMMENT;
 
+CARET: '^';
+
+
+PRIMATIVE: 'primitive';
 //NUMBER
-NUMBER: RADEX? (DECIMAL| INTEGER) EXPONENT?;
-DECIMAL: '-'? DIGIT+ '.' DIGIT+;
-INTEGER: '-'? DIGIT+;
-RADEX: (DIGIT+) 'r';
-EXPONENT: 'e' '-'? (DIGIT+);
+NUMBER: (DIGITS 'r')?  '-'? BIG_DIGITS+ ('.' BIG_DIGITS)? ('e' '-'? DIGITS)?;
 
 
 IDENTIFIER: LETTER ( LETTER | DIGIT )*;
-COMMENT: DOUBLE_QUOTE (CHARACTER | DOUBLE_QUOTE DOUBLE_QUOTE| SINGLE_QUOTE | SEPARATOR)+ DOUBLE_QUOTE;
+COMMENT: DOUBLE_QUOTE (CHARACTER | DOUBLE_QUOTE DOUBLE_QUOTE| SINGLE_QUOTE | SEPARATOR )+ DOUBLE_QUOTE ;
 CHARACTER_CONSTANT: DOLLAR (CHARACTER |  SINGLE_QUOTE | DOUBLE_QUOTE);
-STRING: SINGLE_QUOTE (CHARACTER| SINGLE_QUOTE SINGLE_QUOTE | DOUBLE_QUOTE)+ SINGLE_QUOTE;
+STRING: SINGLE_QUOTE (CHARACTER| SINGLE_QUOTE SINGLE_QUOTE | DOUBLE_QUOTE | SEPARATOR)+ SINGLE_QUOTE;
 
 DIGIT: [0-9];
+DIGITS: DIGIT DIGIT?;
+BIG_DIGITS:BIG_DIGIT+;
+BIG_DIGIT: DIGIT | [A-Z];
 LETTER: [a-zA-Z];
 
 MINUS: '-';
@@ -70,6 +73,5 @@ CHARACTER: SELECTOR_CHARACTER | DIGIT | LETTER;
 SEMICOLON: ';';
 
 
-PRIMATIVE: 'primitive:';
 LEFT_ARROW: '<';
 RIGHT_ARROW:'>';
