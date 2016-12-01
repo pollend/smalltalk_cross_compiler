@@ -8,7 +8,7 @@ public class KeywordExpressionTranslation
     private  SmalltalkParser.Keyword_expressionContext ctx;
     private  SmalltalkVistor vistor;
     public  KeywordExpressionTranslation(SmalltalkParser.Keyword_expressionContext ctx, SmalltalkVistor vistor)
-    {
+        {
         this.ctx = ctx;
         this.vistor = vistor;
     }

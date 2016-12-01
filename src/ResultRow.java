@@ -13,14 +13,12 @@ public class ResultRow implements IBaseValue {
         this.result = result;
     }
 
-    public List<String> getResult()
+    public String getResult()
     {
-        ArrayList<String> output = new ArrayList<>();
         if(!this.ret)
-            output.add(result);
+            return result;
         else
-            output.add(result + "\n");
+            return result + "\n";
 
-        return output;
     }
 }
