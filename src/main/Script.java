@@ -27,6 +27,10 @@ public class Script implements  IPythonNode {
             {
                 result +=  ((ExpressionSeries)nodes.get(x)).GetResult(0);
             }
+            else if(nodes.get(x) instanceof BlockExpression)
+            {
+                result += ((BlockExpression)nodes.get(x)).getEntry(0);
+            }
         }
         return  result;
     }

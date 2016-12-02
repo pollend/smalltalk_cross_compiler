@@ -13,6 +13,6 @@ public class Number extends  Primary {
 
     @Override
     public String getResult() {
-        return this.number;
+        return  this.number;
     }
 }

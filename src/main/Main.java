@@ -19,11 +19,7 @@ public class Main {
 
              SmalltalkVistor vistor = new SmalltalkVistor();
              String finalResult = "";
-            /*List<String> results = ((ResultBlock)vistor.visit(tree)).getResult();
-            for(int x = 0; x < results.size(); x++)
-            {
-                System.out.println(results.get(x));
-            }*/
+            System.out.println(((Script)vistor.visit(tree)).getResult());
 
         } catch (IOException e) {
             e.printStackTrace();

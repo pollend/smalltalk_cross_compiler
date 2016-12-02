@@ -13,10 +13,11 @@ public class InlineFunctionExpression extends InlineExpression {
     private  String functionName= "";
     private  FunctionResolver functionResolver;
 
-    public  InlineFunctionExpression(String functionName,FunctionResolver functionResolver)
+    public  InlineFunctionExpression(String functionName,FunctionResolver functionResolver,HashMap<String, InlineExpression> messages)
     {
         this.functionResolver = functionResolver;
         this.functionName = functionName;
+        this.entires = messages;
     }
 
     public  void  AddMessage(String key, InlineExpression expression)

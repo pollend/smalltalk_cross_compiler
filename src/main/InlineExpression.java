@@ -5,6 +5,7 @@ package main;
  */
 public class InlineExpression extends  BaseExpression {
 
+
     public String getResult()
     {
         return  "";

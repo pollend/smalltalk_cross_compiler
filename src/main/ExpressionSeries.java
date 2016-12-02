@@ -25,7 +25,7 @@ public class ExpressionSeries implements IPythonNode{
         String result = "";
         for(int x = 0; x < blockExpressions.size(); x++)
         {
-            result  += blockExpressions.get(x).getEntry(depth) + "\n";
+            result  += blockExpressions.get(x).getEntry(depth) ;
         }
         return  result;
     }

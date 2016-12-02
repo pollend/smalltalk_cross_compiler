@@ -1,12 +1,16 @@
 package main;
 
+import main.function.BlockFunctionExpression;
+import main.function.FunctionResolver;
+import main.function.IFunction;
+import main.function.InlineFunctionExpression;
 import main.gen.SmalltalkBaseVisitor;
 import main.gen.SmalltalkParser;
-import main.inline.NestedExpression;
-import main.inline.Primary;
-import main.inline.VariablePrimary;
+import main.inline.*;
+import main.inline.Number;
 import org.antlr.v4.runtime.tree.TerminalNode;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -14,6 +18,12 @@ import java.util.List;
  */
 public class SmalltalkVistor extends SmalltalkBaseVisitor<IPythonNode> {
 
+    private FunctionResolver functionResolver;
+
+    public  SmalltalkVistor()
+    {
+        functionResolver = new FunctionResolver();
+    }
 
     @Override
     public IPythonNode visitComment(SmalltalkParser.CommentContext ctx) {
@@ -31,27 +41,30 @@ public class SmalltalkVistor extends SmalltalkBaseVisitor<IPythonNode> {
         for(int x = 0; x < variableNames.size(); x++)
         {
             IPythonNode entry =  visit(variableNames.get(x));
-            if(entry instanceof  BlockExpression)
-                expressionSeries.addExpressionEntry((BlockExpression) entry);
+            if(entry instanceof  InlineExpression)
+                expressionSeries.addExpressionEntry(new AssignmentExpression(((InlineExpression) entry).getResult(),new Number("0")));
         }
         return  expressionSeries;
     }
 
     @Override
     public IPythonNode visitExpression(SmalltalkParser.ExpressionContext ctx) {
-//        String row = "";
-//        if(ctx.ASSIGNMENT() != null)
-//        {
-//            main.ResultRow assignment = (main.ResultRow) visit(ctx.variable_name());
-//            row = assignment.getResult() + "=";
-//        }
-//        SmalltalkParser.PrimaryContext primaryContext =  ctx.primary();
-//        //if(primaryContext  != null)
-//           // row += ((main.ResultRow)visit(ctx.primary())).getResult();
-//       return new main.ResultRow(row,true);
-        return  null;
+        SmalltalkParser.Variable_nameContext variableName = ctx.variable_name();
+        if(variableName != null)
+        {
+             if(ctx.message_expression() != null) {
+                 return new AssignmentExpression(ctx.variable_name().IDENTIFIER().getText(), (InlineExpression) visit(ctx.message_expression()));
+             }
+             else if(ctx.primary() != null)
+             {
+                return  new AssignmentExpression(ctx.variable_name().IDENTIFIER().getText(),(InlineExpression)visit(ctx.primary()));
+             }
+        }
 
+        return new InlineBlockExpressionWrapper((InlineExpression)visit(ctx.message_expression()));
     }
+
+
 
     @Override
     public IPythonNode visitScript(SmalltalkParser.ScriptContext ctx) {
@@ -67,14 +80,21 @@ public class SmalltalkVistor extends SmalltalkBaseVisitor<IPythonNode> {
     @Override
     public IPythonNode visitBinary_expression(SmalltalkParser.Binary_expressionContext ctx) {
         ResultRow row = (ResultRow)visit(ctx.primary());
+        BinaryExpression binaryExpression = new BinaryExpression( (Primary)visit(ctx.primary()));
         List<SmalltalkParser.Binary_messageContext> binaryMessages = ctx.binary_message();
         for(int x = 0; x < binaryMessages.size(); x++)
         {
-            ResultRow binary_row = (ResultRow)visit(binaryMessages.get(x));
-
+            binaryExpression.addBinaryMessage((BinaryMessage) visit(binaryMessages.get(x)));
         }
 
         return super.visitBinary_expression(ctx);
+    }
+
+    @Override
+    public IPythonNode visitBinary_message(SmalltalkParser.Binary_messageContext ctx) {
+        BinaryMessage.BinaryOperator operator = BinaryMessage.getOperator(ctx.binary_selector().getText());
+
+        return new BinaryMessage(operator, (Primary) visit(ctx.primary()));
     }
 
     @Override
@@ -84,8 +104,7 @@ public class SmalltalkVistor extends SmalltalkBaseVisitor<IPythonNode> {
 
     @Override
     public IPythonNode visitVariable_name(SmalltalkParser.Variable_nameContext ctx) {
-        //return new main.ResultRow(ctx.IDENTIFIER().getText(),true);
-        return  null;
+        return new VariablePrimary(ctx.IDENTIFIER().getText());
     }
 
     @Override
@@ -98,6 +117,21 @@ public class SmalltalkVistor extends SmalltalkBaseVisitor<IPythonNode> {
         {
             return new VariablePrimary(ctx.variable_name().IDENTIFIER().getText());
         }
+        else if(ctx.literal() != null)
+        {
+            SmalltalkParser.LiteralContext literal = ctx.literal();
+            if(literal.number()  != null) {
+                return new Number(literal.number().getText());
+            }
+            else if(literal.string() != null)
+            {
+                return  new StringPrimary(literal.string().getText());
+            }
+            else if(literal.character_constant() != null)
+            {
+                return  new CharacterConstant(literal.character_constant().getText());
+            }
+        }
         else if(ctx.block() != null)
         {
         }
@@ -107,7 +141,16 @@ public class SmalltalkVistor extends SmalltalkBaseVisitor<IPythonNode> {
 
     @Override
     public IPythonNode visitKeyword_expression(SmalltalkParser.Keyword_expressionContext ctx) {
+        CompoundStatment.CompoundStatmentType compoundStatmentType = CompoundStatment.keywordMatch(ctx.keyword_message(), this);
+        if(compoundStatmentType != CompoundStatment.CompoundStatmentType.NONE)
+        {
+            return CompoundStatment.Parse(ctx,this,compoundStatmentType);
+        }
+        else
+        {
+                HashMap<String, InlineExpression> messages = FunctionResolver.getMessages(ctx.keyword_message(), this);
+                return new InlineFunctionExpression(ctx.primary().unit().variable_name().IDENTIFIER().getText(),functionResolver,messages);
+        }
 
-        return super.visitKeyword_expression(ctx);
     }
 }

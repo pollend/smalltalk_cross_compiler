@@ -1,4 +1,5 @@
-package main.gen;// Generated from /home/michaelpollind/Desktop/smalltalk_cross_compiler/Smalltalk.g4 by ANTLR 4.5.3
+// Generated from /home/michaelpollind/Desktop/smalltalk_cross_compiler/Smalltalk.g4 by ANTLR 4.5.3
+package main.gen;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
 /**

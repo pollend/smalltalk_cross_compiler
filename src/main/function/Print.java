@@ -14,6 +14,7 @@ public class Print implements IFunction {
         return "Transcript";
     }
 
+
     @Override
     public String getResult(HashMap<String, InlineExpression> messages) {
         if(messages.size() == 1)
@@ -23,8 +24,9 @@ public class Print implements IFunction {
                 return "print(" + messages.get("show").getResult()+")";
             }
         }
-        return null;
+        return "";
     }
+
 
 
 }

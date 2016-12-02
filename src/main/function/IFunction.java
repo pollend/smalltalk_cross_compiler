@@ -9,5 +9,6 @@ import java.util.HashMap;
  */
 public interface IFunction {
     String matchingFunctionCall();
+
     String getResult(HashMap<String, InlineExpression> messages);
 }

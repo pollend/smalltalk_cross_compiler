@@ -1,8 +1,12 @@
 package main.function;
 
+import main.InlineExpression;
+import main.SmalltalkVistor;
+import main.gen.SmalltalkParser;
 import org.reflections.Reflections;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -38,6 +42,20 @@ public class FunctionResolver {
             return functions.get(functionName);
         }
         return null;
+    }
+
+    public static HashMap<String, InlineExpression> getMessages(SmalltalkParser.Keyword_messageContext ctx, SmalltalkVistor vistor)
+    {
+        HashMap<String,InlineExpression> result = new HashMap<>();
+        List<SmalltalkParser.KeywordContext> keywords = ctx.keyword();
+        List<SmalltalkParser.PrimaryContext> primaries = ctx.primary();
+
+        for(int x = 0; x < keywords.size(); x++)
+        {
+            result.put(keywords.get(x).IDENTIFIER().getText(),(InlineExpression) vistor.visit(primaries.get(x)));
+        }
+        return  result;
+
     }
 
 }

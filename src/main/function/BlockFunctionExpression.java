@@ -12,27 +12,24 @@ import java.util.List;
  */
 public class BlockFunctionExpression extends BlockExpression{
 
-    private HashMap<String,InlineExpression> entires = new HashMap<>();
+    private HashMap<String,InlineExpression> messages = new HashMap<>();
     private  String functionName= "";
     private  FunctionResolver functionResolver;
 
-    public  BlockFunctionExpression(String functionName,FunctionResolver functionResolver)
+    public  BlockFunctionExpression(String functionName,FunctionResolver functionResolver,HashMap<String, InlineExpression> messages)
     {
+        this.messages = messages;
         this.functionResolver = functionResolver;
         this.functionName = functionName;
     }
 
-    public  void  AddMessage(String key, InlineExpression expression)
-    {
-        entires.put(key,expression);
-    }
 
     @Override
     public String getEntry(int indent) {
         IFunction function = this.functionResolver.ResolveFunction(this.functionName);
         if(function != null)
         {
-            return function.getResult(entires) + "\n";
+            return function.getResult(messages) + "\n";
         }
         else
         {

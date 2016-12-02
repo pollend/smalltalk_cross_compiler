@@ -1,4 +1,5 @@
-package main.gen;// Generated from /home/michaelpollind/Desktop/smalltalk_cross_compiler/Smalltalk.g4 by ANTLR 4.5.3
+// Generated from /home/michaelpollind/Desktop/smalltalk_cross_compiler/Smalltalk.g4 by ANTLR 4.5.3
+package main.gen;
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
 /**
@@ -56,7 +57,7 @@ public interface SmalltalkVisitor<T> extends ParseTreeVisitor<T> {
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitUnit(SmalltalkParser.UnitContext ctx) ;
+	T visitUnit(SmalltalkParser.UnitContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link SmalltalkParser#primary}.
 	 * @param ctx the parse tree
