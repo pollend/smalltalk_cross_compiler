@@ -61,6 +61,8 @@ public class SmalltalkVistor extends SmalltalkBaseVisitor<IPythonNode> {
              }
         }
 
+
+
         return visit(ctx.message_expression());
     }
 
@@ -104,7 +106,15 @@ public class SmalltalkVistor extends SmalltalkBaseVisitor<IPythonNode> {
         List<SmalltalkParser.ExpressionContext> expressions = ctx.expression();
         for(int x = 0; x < expressions.size(); x++)
         {
-            expressionSeries.addExpressionEntry((BlockExpression)new InlineBlockExpressionWrapper((InlineExpression) visit(expressions.get(x))));
+            IPythonNode node =  visit(expressions.get(x));
+
+            if(node instanceof InlineExpression) {
+                expressionSeries.addExpressionEntry((BlockExpression) new InlineBlockExpressionWrapper((InlineExpression) visit(expressions.get(x))));
+            }
+            else
+            {
+                expressionSeries.addExpressionEntry((BlockExpression) visit(expressions.get(x)));
+            }
         }
 
         return expressionSeries;
@@ -162,7 +172,18 @@ public class SmalltalkVistor extends SmalltalkBaseVisitor<IPythonNode> {
         }
         else
         {
+
+//                 if(ctx.getParent() instanceof SmalltalkParser.ExpressionContext)
+//                 {
+//                     List<SmalltalkParser.Cascade_messageContext> cascade_message = ((SmalltalkParser.ExpressionContext) ctx.getParent()).cascade_message();
+//                     for(int x = 0; x < cascade_message.size(); x++)
+//                     {
+//
+//                     }
+//                 }
+
                 HashMap<String, InlineExpression> messages = FunctionResolver.getMessages(ctx.keyword_message(), this);
+
                 return new InlineFunctionExpression(ctx.primary().unit().variable_name().IDENTIFIER().getText(),functionResolver,messages);
         }
 

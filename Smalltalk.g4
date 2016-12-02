@@ -2,7 +2,6 @@ grammar Smalltalk;
 
 script: (method | expression '.' | comment | temporaries )* EOF;
 
-
 method: message_pattern primitive_number? temporaries? expression_series;
 message_pattern: unary_selector | (binary_selector variable_name) | (keyword variable_name)+;
 primitive_number: LEFT_ARROW PRIMATIVE COLON number RIGHT_ARROW;

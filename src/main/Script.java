@@ -31,6 +31,10 @@ public class Script implements  IPythonNode {
             {
                 result += ((BlockExpression)nodes.get(x)).getEntry(0);
             }
+            else  if(nodes.get(x) instanceof  InlineExpression)
+            {
+                result += new InlineBlockExpressionWrapper((InlineExpression) nodes.get(x)).getEntry(0);
+            }
         }
         return  result;
     }

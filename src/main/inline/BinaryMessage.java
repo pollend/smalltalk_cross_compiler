@@ -8,6 +8,7 @@ public class BinaryMessage extends Primary{
         ADD("+"),
         SUBTRACT("-"),
         MULTIPLY("*"),
+        ASSIGNMENT("="),
         EQUALITY("=="),
         LESS_THAN("<"),
         GREATER_THAN(">"),
