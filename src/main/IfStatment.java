@@ -1,7 +1,9 @@
 package main;
 
 import main.gen.SmalltalkParser;
+import main.inline.InvertedExpression;
 import main.inline.NestedExpression;
+import main.inline.Primary;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,21 +39,26 @@ public class IfStatment extends CompoundStatment {
 
     public static IfStatment Handle(SmalltalkParser.Keyword_expressionContext ctx, SmalltalkVistor vistor, CompoundStatmentType statmentType)
     {
-        SmalltalkParser.Keyword_messageContext keyword_messageContext = ctx.keyword_message();
+        SmalltalkParser.Keyword_messageContext keywordMessage = ctx.keyword_message();
         IfStatment statment = new IfStatment();
         if(statmentType == CompoundStatmentType.IF_STATEMENT)
         {
-            statment.addIfStatment(new NestedExpression(ctx.keyword_message().primary().get(0)));
 
-            //statment.addElseClosing();
+            statment.addIfStatment(new NestedExpression((Primary) vistor.visit(ctx.primary())), (ExpressionSeries) vistor.visit(ctx.keyword_message().primary().get(0)));
         }
         else if(statmentType == CompoundStatmentType.IF_STATEMENT_INVERT)
         {
-
+            statment.addIfStatment(new NestedExpression(new InvertedExpression((Primary) vistor.visit(ctx.primary()))), (ExpressionSeries) vistor.visit(ctx.keyword_message().primary().get(0)));
         }
         else if(statmentType == CompoundStatmentType.IF_STATEMENT_ELSE_INVERT)
         {
-
+            statment.addIfStatment(new NestedExpression(new InvertedExpression((Primary) vistor.visit(ctx.primary()))), (ExpressionSeries) vistor.visit(ctx.keyword_message().primary().get(0)));
+            statment.addElseClosing((ExpressionSeries) vistor.visit(ctx.keyword_message().primary().get(1)));
+        }
+        else if(statmentType == CompoundStatmentType.IF_STATEMENT_ELSE)
+        {
+            statment.addIfStatment(new NestedExpression((Primary) vistor.visit(ctx.primary())), (ExpressionSeries) vistor.visit(ctx.keyword_message().primary().get(0)));
+            statment.addElseClosing((ExpressionSeries) vistor.visit(ctx.keyword_message().primary().get(1)));
         }
         return statment;
 
