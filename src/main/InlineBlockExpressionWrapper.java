@@ -10,6 +10,11 @@ public class InlineBlockExpressionWrapper extends BlockExpression {
         this.inlineExpression = inlineExpression;
     }
 
+    public  InlineExpression getInlineExpression()
+    {
+        return  inlineExpression;
+    }
+
     @Override
     public String getEntry(int indent) {
         return this.leftPad(indent,inlineExpression.getResult() + "\n");

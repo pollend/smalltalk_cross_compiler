@@ -13,7 +13,7 @@ public class BlockExpression extends BaseExpression{
     {
         for(int x = 0; x < indent; x++)
         {
-            input += ' ' + input;
+            input = ' ' + input;
         }
         return  input;
     }

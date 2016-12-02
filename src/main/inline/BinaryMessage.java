@@ -37,13 +37,13 @@ public class BinaryMessage extends Primary{
     @Override
     public String getResult() {
 
-        return this.operator.getEntry() + " " + primary.getResult();
+        return " " + this.operator.getEntry() + " " + primary.getResult();
     }
 
     public  static  BinaryOperator getOperator(String operator)
     {
         for (BinaryOperator b: BinaryOperator.values()) {
-            if(b.getEntry() == operator)
+            if(b.getEntry().equals(operator))
             {
                 return  b;
             }

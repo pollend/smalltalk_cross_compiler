@@ -26,17 +26,18 @@ public class CompoundStatment extends BlockExpression{
         List<SmalltalkParser.KeywordContext> keywords = ctx.keyword();
         if(keywords.size() == 1)
         {
-            if(keywords.get(0).IDENTIFIER().getText() == "ifTrue")
+            String test = keywords.get(0).IDENTIFIER().getText();
+            if(keywords.get(0).IDENTIFIER().getText().equals("ifTrue"))
                 return  CompoundStatmentType.IF_STATEMENT;
 
-            if(keywords.get(0).IDENTIFIER().getText() == "ifFalse")
+            if(keywords.get(0).IDENTIFIER().getText().equals("ifFalse"))
                 return  CompoundStatmentType.IF_STATEMENT_INVERT;
         }
         else if(keywords.size() == 2)
         {
-            if(keywords.get(0).IDENTIFIER().getText() == "ifTrue" && keywords.get(1).IDENTIFIER().getText() == "ifFalse")
+            if(keywords.get(0).IDENTIFIER().getText().equals("ifTrue") && keywords.get(1).IDENTIFIER().getText().equals("ifFalse"))
                 return  CompoundStatmentType.IF_STATEMENT_ELSE;
-            if(keywords.get(1).IDENTIFIER().getText() == "ifTrue" && keywords.get(0).IDENTIFIER().getText() == "ifFalse")
+            if(keywords.get(1).IDENTIFIER().getText().equals("ifTrue") && keywords.get(0).IDENTIFIER().getText().equals("ifFalse"))
                 return  CompoundStatmentType.IF_STATEMENT_ELSE_INVERT;
 
         }
@@ -52,7 +53,7 @@ public class CompoundStatment extends BlockExpression{
             case IF_STATEMENT_ELSE:
             case IF_STATEMENT_INVERT:
             case IF_STATEMENT_ELSE_INVERT:
-                return IfStatment.Parse(ctx,vistor,statmentType);
+                return IfStatment.Handle(ctx,vistor,statmentType);
             default:
                 return  null;
         }

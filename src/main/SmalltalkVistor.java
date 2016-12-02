@@ -61,7 +61,7 @@ public class SmalltalkVistor extends SmalltalkBaseVisitor<IPythonNode> {
              }
         }
 
-        return new InlineBlockExpressionWrapper((InlineExpression)visit(ctx.message_expression()));
+        return visit(ctx.message_expression());
     }
 
 
@@ -79,7 +79,7 @@ public class SmalltalkVistor extends SmalltalkBaseVisitor<IPythonNode> {
 
     @Override
     public IPythonNode visitBinary_expression(SmalltalkParser.Binary_expressionContext ctx) {
-        ResultRow row = (ResultRow)visit(ctx.primary());
+
         BinaryExpression binaryExpression = new BinaryExpression( (Primary)visit(ctx.primary()));
         List<SmalltalkParser.Binary_messageContext> binaryMessages = ctx.binary_message();
         for(int x = 0; x < binaryMessages.size(); x++)
@@ -87,7 +87,7 @@ public class SmalltalkVistor extends SmalltalkBaseVisitor<IPythonNode> {
             binaryExpression.addBinaryMessage((BinaryMessage) visit(binaryMessages.get(x)));
         }
 
-        return super.visitBinary_expression(ctx);
+        return binaryExpression;
     }
 
     @Override
@@ -95,6 +95,19 @@ public class SmalltalkVistor extends SmalltalkBaseVisitor<IPythonNode> {
         BinaryMessage.BinaryOperator operator = BinaryMessage.getOperator(ctx.binary_selector().getText());
 
         return new BinaryMessage(operator, (Primary) visit(ctx.primary()));
+    }
+
+    @Override
+    public IPythonNode visitExpression_series(SmalltalkParser.Expression_seriesContext ctx) {
+        ExpressionSeries expressionSeries = new ExpressionSeries();
+
+        List<SmalltalkParser.ExpressionContext> expressions = ctx.expression();
+        for(int x = 0; x < expressions.size(); x++)
+        {
+            expressionSeries.addExpressionEntry((BlockExpression)new InlineBlockExpressionWrapper((InlineExpression) visit(expressions.get(x))));
+        }
+
+        return expressionSeries;
     }
 
     @Override
@@ -111,7 +124,7 @@ public class SmalltalkVistor extends SmalltalkBaseVisitor<IPythonNode> {
     public IPythonNode visitUnit(SmalltalkParser.UnitContext ctx)  {
         if(ctx.expression() != null)
         {
-            return  new NestedExpression((Primary) this.visit(ctx.expression()));
+            return  this.visit(ctx.expression());
         }
         else if(ctx.variable_name() != null)
         {
@@ -134,6 +147,7 @@ public class SmalltalkVistor extends SmalltalkBaseVisitor<IPythonNode> {
         }
         else if(ctx.block() != null)
         {
+            return  visit(ctx.block().expression_series());
         }
 
         return super.visitUnit(ctx);

@@ -64,16 +64,16 @@ public class IfStatment extends CompoundStatment {
 
     }
 
-    public  String getResult(int indent)
-    {
+    @Override
+    public String getEntry(int indent) {
         String result = "";
         for(int x = 0; x < statmentEntries.size(); x++)
         {
             if(x == 0) {
-                result  += this.leftPad(indent, "if (" + statmentEntries.get(x).testExpression.getResult() + "): \n");
+                result  += this.leftPad(indent, "if " + statmentEntries.get(x).testExpression.getResult() + ": \n");
             }
             else {
-                result += this.leftPad(indent, "elif (" + statmentEntries.get(x).testExpression.getResult() + "): \n");
+                result += this.leftPad(indent, "elif " + statmentEntries.get(x).testExpression.getResult() + ": \n");
             }
             result += statmentEntries.get(x).expressions.GetResult(indent+1);
         }
@@ -84,5 +84,7 @@ public class IfStatment extends CompoundStatment {
         }
         return result;
     }
+
+
 
 }

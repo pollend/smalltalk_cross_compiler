@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Created by michaelpollind on 12/1/16.
  */
-public class BinaryExpression extends InlineExpression{
+public class BinaryExpression extends Primary{
     private  Primary primary;
     private List<BinaryMessage> binaryMesssages = new ArrayList<>();
 
