@@ -1,5 +1,7 @@
-package main;
+package main.compoundStatement;
 
+import main.ExpressionSeries;
+import main.SmalltalkVistor;
 import main.gen.SmalltalkParser;
 import main.inline.InvertedExpression;
 import main.inline.NestedExpression;
@@ -11,15 +13,15 @@ import java.util.List;
 /**
  * Created by michaelpollind on 11/30/16.
  */
-public class IfStatment extends CompoundStatment {
+public class IfStatement extends CompoundStatment {
    private  class  IfStatmentEntry{
        public NestedExpression testExpression;
-       public  ExpressionSeries expressions;
+       public ExpressionSeries expressions;
    }
 
     private List<IfStatmentEntry> statmentEntries = new ArrayList<>();
     private ExpressionSeries closingExpression = null;
-    public  IfStatment()
+    public IfStatement()
     {
 
     }
@@ -37,10 +39,10 @@ public class IfStatment extends CompoundStatment {
         this.closingExpression = expression;
     }
 
-    public static IfStatment Handle(SmalltalkParser.Keyword_expressionContext ctx, SmalltalkVistor vistor, CompoundStatmentType statmentType)
+    public static IfStatement Handle(SmalltalkParser.Keyword_expressionContext ctx, SmalltalkVistor vistor, CompoundStatmentType statmentType)
     {
         SmalltalkParser.Keyword_messageContext keywordMessage = ctx.keyword_message();
-        IfStatment statment = new IfStatment();
+        IfStatement statment = new IfStatement();
         if(statmentType == CompoundStatmentType.IF_STATEMENT)
         {
 

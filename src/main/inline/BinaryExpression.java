@@ -1,7 +1,5 @@
 package main.inline;
 
-import main.InlineExpression;
-
 import java.util.ArrayList;
 import java.util.List;
 

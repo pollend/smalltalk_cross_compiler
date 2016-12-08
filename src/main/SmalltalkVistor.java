@@ -1,14 +1,14 @@
 package main;
 
-import main.function.BlockFunctionExpression;
+import main.compoundStatement.CompoundStatment;
 import main.function.FunctionResolver;
-import main.function.IFunction;
 import main.function.InlineFunctionExpression;
 import main.gen.SmalltalkBaseVisitor;
 import main.gen.SmalltalkParser;
 import main.inline.*;
 import main.inline.Number;
 import org.antlr.v4.runtime.tree.TerminalNode;
+import org.antlr.v4.runtime.tree.TerminalNodeImpl;
 
 import java.util.HashMap;
 import java.util.List;
@@ -134,7 +134,7 @@ public class SmalltalkVistor extends SmalltalkBaseVisitor<IPythonNode> {
     public IPythonNode visitUnit(SmalltalkParser.UnitContext ctx)  {
         if(ctx.expression() != null)
         {
-            return  this.visit(ctx.expression());
+            return  new NestedExpression((Primary) this.visit(ctx.expression()));
         }
         else if(ctx.variable_name() != null)
         {
@@ -154,6 +154,7 @@ public class SmalltalkVistor extends SmalltalkBaseVisitor<IPythonNode> {
             {
                 return  new CharacterConstant(literal.character_constant().getText());
             }
+
         }
         else if(ctx.block() != null)
         {
@@ -162,6 +163,39 @@ public class SmalltalkVistor extends SmalltalkBaseVisitor<IPythonNode> {
 
         return super.visitUnit(ctx);
     }
+
+    @Override
+    public IPythonNode visitArray_constant(SmalltalkParser.Array_constantContext ctx) {
+        return visit(ctx.array());
+    }
+
+    @Override
+    public IPythonNode visitArray(SmalltalkParser.ArrayContext ctx) {
+        Array array = new Array();
+        for(int x = 0; x < ctx.getChildCount(); x++)
+        {
+            if(!(ctx.getChild(x) instanceof TerminalNodeImpl))
+            array.addArrayEntry((Primary) this.visit(ctx.getChild(x)));
+        }
+        return  array;
+
+    }
+
+    @Override
+    public IPythonNode visitString(SmalltalkParser.StringContext ctx) {
+        return super.visitString(ctx);
+    }
+
+    @Override
+    public IPythonNode visitNumber(SmalltalkParser.NumberContext ctx) {
+        return new Number(ctx.getText());
+    }
+
+    @Override
+    public IPythonNode visitCharacter_constant(SmalltalkParser.Character_constantContext ctx) {
+        return new CharacterConstant(ctx.getText());
+    }
+
 
     @Override
     public IPythonNode visitKeyword_expression(SmalltalkParser.Keyword_expressionContext ctx) {

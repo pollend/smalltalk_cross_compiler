@@ -1,5 +1,7 @@
-package main;
+package main.compoundStatement;
 
+import main.BlockExpression;
+import main.SmalltalkVistor;
 import main.gen.SmalltalkParser;
 
 import java.util.List;
@@ -7,7 +9,7 @@ import java.util.List;
 /**
  * Created by michaelpollind on 11/30/16.
  */
-public class CompoundStatment extends BlockExpression{
+public class CompoundStatment extends BlockExpression {
     public  enum  CompoundStatmentType{
         IF_STATEMENT,
         IF_STATEMENT_INVERT,
@@ -15,6 +17,7 @@ public class CompoundStatment extends BlockExpression{
         IF_STATEMENT_ELSE_INVERT,
         WHILE_STATMENT,
         FOR_STATMENT,
+        ITERATE_COLLECTION,
         TRY_STATMENT, // not needed for the trans-compiler
         WITH_STATMENT,
         FUNCTION_STATMENT,
@@ -32,6 +35,9 @@ public class CompoundStatment extends BlockExpression{
 
             if(keywords.get(0).IDENTIFIER().getText().equals("ifFalse"))
                 return  CompoundStatmentType.IF_STATEMENT_INVERT;
+
+            if(keywords.get(0).IDENTIFIER().getText().equals("do"))
+                return  CompoundStatmentType.ITERATE_COLLECTION;
         }
         else if(keywords.size() == 2)
         {
@@ -39,6 +45,9 @@ public class CompoundStatment extends BlockExpression{
                 return  CompoundStatmentType.IF_STATEMENT_ELSE;
             if(keywords.get(1).IDENTIFIER().getText().equals("ifTrue") && keywords.get(0).IDENTIFIER().getText().equals("ifFalse"))
                 return  CompoundStatmentType.IF_STATEMENT_ELSE_INVERT;
+
+            if(keywords.get(0).IDENTIFIER().getText().equals("to") && keywords.get(1).IDENTIFIER().getText().equals("do"))
+                return  CompoundStatmentType.FOR_STATMENT;
 
         }
         return CompoundStatmentType.NONE;
@@ -53,7 +62,11 @@ public class CompoundStatment extends BlockExpression{
             case IF_STATEMENT_ELSE:
             case IF_STATEMENT_INVERT:
             case IF_STATEMENT_ELSE_INVERT:
-                return IfStatment.Handle(ctx,vistor,statmentType);
+                return IfStatement.Handle(ctx,vistor,statmentType);
+            case FOR_STATMENT:
+                return ForLoopStatement.Handle(ctx,vistor,statmentType);
+            case  ITERATE_COLLECTION:
+                return IterateCollectionStatement.Handle(ctx,vistor,statmentType);
             default:
                 return  null;
         }

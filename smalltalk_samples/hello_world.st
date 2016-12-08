@@ -1,20 +1,12 @@
-| output test |
-output := 'Hello World'.
-Transcript show: output; cr.
+a := (a + b) + c.
 
-"Hello this is a comment"
-
-( output == 'Hello World') ifTrue: [
+1 to: 10 do:[
+:x |
     Transcript show: 'test'.
-    ( output == 'Hello World') ifTrue: [
-        Transcript show: 'test'.
+].
 
-    ].
-    ( output == 'Hello World') ifTrue: [
-        Transcript show: 'test'.
+item := #(1 2 3).
 
-    ].
-]
-ifFalse: [
-    Transcript show: 'test'.
+item do : [:x |
+    Transcript show : 'test'.
 ].
