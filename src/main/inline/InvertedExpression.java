@@ -10,6 +10,6 @@ public class InvertedExpression extends  NestedExpression {
 
     @Override
     public String getResult() {
-        return "(!("  + super.getResult() + "))";
+        return "not("  + super.getResult() + ")";
     }
 }

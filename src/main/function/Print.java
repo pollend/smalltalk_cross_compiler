@@ -27,6 +27,12 @@ public class Print implements IFunction {
         return "";
     }
 
+    @Override
+    public String getUnaryResult(String unary_message) {
+        if(unary_message.equals("cr"))
+            return "print('\\n')";
+        return  "";
+    }
 
 
 }

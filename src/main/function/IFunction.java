@@ -11,4 +11,5 @@ public interface IFunction {
     String matchingFunctionCall();
 
     String getResult(HashMap<String, InlineExpression> messages);
+    String getUnaryResult(String unary_message);
 }

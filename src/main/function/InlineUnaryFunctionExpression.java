@@ -5,20 +5,20 @@ import main.InlineExpression;
 import java.util.HashMap;
 
 /**
- * Created by michaelpollind on 12/1/16.
+ * Created by michaelpollind on 12/14/16.
  */
-public class InlineFunctionExpression extends InlineExpression {
+public class InlineUnaryFunctionExpression extends InlineExpression {
 
     private HashMap<String,InlineExpression> entires = new HashMap<>();
     private  String functionName= "";
     private  FunctionResolver functionResolver;
+    private  String unaryMessage;
 
-
-    public  InlineFunctionExpression(String functionName,FunctionResolver functionResolver,HashMap<String, InlineExpression> messages)
+    public  InlineUnaryFunctionExpression (String functionName,FunctionResolver functionResolver,String unaryMessage)
     {
         this.functionResolver = functionResolver;
         this.functionName = functionName;
-        this.entires = messages;
+        this.unaryMessage = unaryMessage;
     }
 
 
@@ -34,7 +34,7 @@ public class InlineFunctionExpression extends InlineExpression {
         IFunction function = this.functionResolver.ResolveFunction(this.functionName);
         if(function != null)
         {
-            return function.getResult(entires);
+            return function.getUnaryResult(unaryMessage);
         }
         else
         {

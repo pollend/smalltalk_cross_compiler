@@ -1,12 +1,3 @@
-a := (a + b) + c.
-
-1 to: 10 do:[
-:x |
-    Transcript show: 'test'.
-].
-
-item := #(1 2 3).
-
-item do : [:x |
-    Transcript show : 'test'.
-].
+( 1 = 1 ) ifTrue: [ Transcript show: 'Yes'. Transcript cr.].
+( 2 < 1 ) ifFalse: [ Transcript show: 'No'.Transcript cr.].
+( 1 >= 4 ) ifTrue: [ Transcript show: 'Yes'.Transcript cr.] ifFalse: [ Transcript show: 'No'.Transcript cr.].

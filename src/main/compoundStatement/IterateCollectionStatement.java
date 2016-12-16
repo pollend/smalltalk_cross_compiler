@@ -35,6 +35,6 @@ public class IterateCollectionStatement extends  CompoundStatment{
         String entry = "";
         entry += "for " + this.variable + " in " + iterator.getResult() + ":\n";
         entry += expressions.GetResult(indent +1);
-        return entry;
+        return entry    ;
     }
 }

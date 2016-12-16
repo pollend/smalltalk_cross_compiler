@@ -1,8 +1,11 @@
 package main;
 
+import com.sun.prism.image.CompoundTexture;
 import main.compoundStatement.CompoundStatment;
 import main.function.FunctionResolver;
+import main.function.IFunction;
 import main.function.InlineFunctionExpression;
+import main.function.InlineUnaryFunctionExpression;
 import main.gen.SmalltalkBaseVisitor;
 import main.gen.SmalltalkParser;
 import main.inline.*;
@@ -59,6 +62,10 @@ public class SmalltalkVistor extends SmalltalkBaseVisitor<IPythonNode> {
              {
                 return  new AssignmentExpression(ctx.variable_name().IDENTIFIER().getText(),(InlineExpression)visit(ctx.primary()));
              }
+        }
+        else if(ctx.primary() != null)
+        {
+            return  visit(ctx.primary());
         }
 
 
@@ -207,19 +214,18 @@ public class SmalltalkVistor extends SmalltalkBaseVisitor<IPythonNode> {
         else
         {
 
-//                 if(ctx.getParent() instanceof SmalltalkParser.ExpressionContext)
-//                 {
-//                     List<SmalltalkParser.Cascade_messageContext> cascade_message = ((SmalltalkParser.ExpressionContext) ctx.getParent()).cascade_message();
-//                     for(int x = 0; x < cascade_message.size(); x++)
-//                     {
-//
-//                     }
-//                 }
 
                 HashMap<String, InlineExpression> messages = FunctionResolver.getMessages(ctx.keyword_message(), this);
 
                 return new InlineFunctionExpression(ctx.primary().unit().variable_name().IDENTIFIER().getText(),functionResolver,messages);
         }
 
+    }
+
+    @Override
+    public IPythonNode visitUnary_expression(SmalltalkParser.Unary_expressionContext ctx) {
+        IFunction function = functionResolver.ResolveFunction(ctx.unit().getText());
+
+        return new InlineUnaryFunctionExpression(ctx.unit().getText(),functionResolver,ctx.unary_message().get(0).getText());
     }
 }

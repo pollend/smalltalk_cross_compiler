@@ -1,6 +1,6 @@
 grammar Smalltalk;
 
-script: (method | expression '.' | comment | temporaries )* EOF;
+script: ( expression '.' | comment | temporaries | method )* EOF;
 
 method: message_pattern primitive_number? temporaries? expression_series;
 message_pattern: unary_selector | (binary_selector variable_name) | (keyword variable_name)+;

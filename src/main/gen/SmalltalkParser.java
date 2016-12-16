@@ -107,12 +107,6 @@ public class SmalltalkParser extends Parser {
 	}
 	public static class ScriptContext extends ParserRuleContext {
 		public TerminalNode EOF() { return getToken(SmalltalkParser.EOF, 0); }
-		public List<MethodContext> method() {
-			return getRuleContexts(MethodContext.class);
-		}
-		public MethodContext method(int i) {
-			return getRuleContext(MethodContext.class,i);
-		}
 		public List<ExpressionContext> expression() {
 			return getRuleContexts(ExpressionContext.class);
 		}
@@ -130,6 +124,12 @@ public class SmalltalkParser extends Parser {
 		}
 		public TemporariesContext temporaries(int i) {
 			return getRuleContext(TemporariesContext.class,i);
+		}
+		public List<MethodContext> method() {
+			return getRuleContexts(MethodContext.class);
+		}
+		public MethodContext method(int i) {
+			return getRuleContext(MethodContext.class,i);
 		}
 		public ScriptContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -168,27 +168,27 @@ public class SmalltalkParser extends Parser {
 				case 1:
 					{
 					setState(64);
-					method();
+					expression();
+					setState(65);
+					match(T__0);
 					}
 					break;
 				case 2:
 					{
-					setState(65);
-					expression();
-					setState(66);
-					match(T__0);
+					setState(67);
+					comment();
 					}
 					break;
 				case 3:
 					{
 					setState(68);
-					comment();
+					temporaries();
 					}
 					break;
 				case 4:
 					{
 					setState(69);
-					temporaries();
+					method();
 					}
 					break;
 				}
@@ -2382,8 +2382,8 @@ public class SmalltalkParser extends Parser {
 		"&\u00df\3\2\2\2(\u00e8\3\2\2\2*\u00ea\3\2\2\2,\u00f1\3\2\2\2.\u00f3\3"+
 		"\2\2\2\60\u00f6\3\2\2\2\62\u0103\3\2\2\2\64\u0105\3\2\2\2\66\u0107\3\2"+
 		"\2\28\u0109\3\2\2\2:\u0113\3\2\2\2<\u0115\3\2\2\2>\u0117\3\2\2\2@\u0119"+
-		"\3\2\2\2BI\5\4\3\2CD\5\16\b\2DE\7\3\2\2EI\3\2\2\2FI\5@!\2GI\5\n\6\2HB"+
-		"\3\2\2\2HC\3\2\2\2HF\3\2\2\2HG\3\2\2\2IL\3\2\2\2JH\3\2\2\2JK\3\2\2\2K"+
+		"\3\2\2\2BC\5\16\b\2CD\7\3\2\2DI\3\2\2\2EI\5@!\2FI\5\n\6\2GI\5\4\3\2HB"+
+		"\3\2\2\2HE\3\2\2\2HF\3\2\2\2HG\3\2\2\2IL\3\2\2\2JH\3\2\2\2JK\3\2\2\2K"+
 		"M\3\2\2\2LJ\3\2\2\2MN\7\2\2\3N\3\3\2\2\2OQ\5\6\4\2PR\5\b\5\2QP\3\2\2\2"+
 		"QR\3\2\2\2RT\3\2\2\2SU\5\n\6\2TS\3\2\2\2TU\3\2\2\2UV\3\2\2\2VW\5\f\7\2"+
 		"W\5\3\2\2\2Xd\5*\26\2YZ\5(\25\2Z[\5> \2[d\3\2\2\2\\]\5&\24\2]^\5> \2^"+
